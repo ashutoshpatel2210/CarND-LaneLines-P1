@@ -21,10 +21,20 @@ The goals / steps of this project are the following:
 
 ### Reflection
 
-### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
+### 1. Describe your pipeline. 
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+My pipeline consisted of 5 steps. 
 
+1. Reading the image from test_images
+2. Convert Image into Grary scale Image
+3. Remove noise from grary scale image
+4. Canny edge detection
+5. Cropped with region of interest
+6. Hough Transformation
+7. Average lines
+8. Weighted Average
+9. Applying to video
+    
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
 
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
