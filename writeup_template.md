@@ -35,8 +35,12 @@ My pipeline consisted of following steps.
 ### 1. Reading the image from test_images
 
 First, images are read from test_images folder using mpimg.imread(). Local copy of images are created using np.copy() function and copy image (lane_image) is passed to pipline function lane_finding_pipeline() to generate left and right lane annonated version of image.     
+[image2]: ./test_images/solidWhiteCurve.jpg
 
-### 2. Convert Image into Grary scale Image
+### 2. Convert Image into Gray scale Image
+Each image (RGB - 3channels) is converted into Gray scale image(1 channel). Coverting image from RGB to Gray scale saves lots of computation power and makes image processing faster. 
+
+[image3]: ./test_images_output/processed_grayscale_solidWhiteCurve.jpg
 
 3. Remove noise from grary scale image
 4. Canny edge detection
