@@ -22,18 +22,31 @@ The goals / steps of this project are the following:
 ### Reflection
 
 ### 1. Describe your pipeline. 
+As starting point of project, Project requirements and design should be in place. 
 
-My pipeline consisted of 5 steps. 
+### Requirements:
+Project expects 
+ * To have left and right lane lines are accurately annoted for images as well as videos. 
+ * Output images and videos are annonated versions of input images and videos.
 
-1. Reading the image from test_images
-2. Convert Image into Grary scale Image
+### Design
+My pipeline consisted of following steps. 
+
+### 1. Reading the image from test_images
+
+First, images are read from test_images folder using mpimg.imread(). Local copy of images are created using np.copy() function and copy image (lane_image) is passed to pipline function lane_finding_pipeline() to generate left and right lane annonated version of image.     
+
+### 2. Convert Image into Grary scale Image
+
 3. Remove noise from grary scale image
 4. Canny edge detection
 5. Cropped with region of interest
 6. Hough Transformation
 7. Average lines
 8. Weighted Average
-9. Applying to video
+
+
+Applying to video
     
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
 
