@@ -16,7 +16,7 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./test_images/solidWhiteCurve.jpg "Original Image"
-[image2]: ./processed_grayscale_solidWhiteCurve.jpg "Grayscale"
+[image2]: ./processed_grayscale_solidWhiteCurve.png "Grayscale"
 
 ---
 
@@ -33,17 +33,19 @@ Project expects
 ### Design
 My pipeline consisted of following steps. 
 
-### 1. Reading the image from test_images
+### Reading the image from test_images
 
 First, images are read from test_images folder using mpimg.imread(). Local copy of images are created using np.copy() function and copy image (lane_image) is passed to pipline function lane_finding_pipeline() to generate left and right lane annonated version of image.     
 ![alt text][image1]
 
-### 2. Convert Image into Gray scale Image
-Each image (RGB - 3channels) is converted into Gray scale image(1 channel). Coverting image from RGB to Gray scale saves lots of computation power and makes image processing faster. 
+### Convert Image into Gray scale Image
+
+Each image (RGB - 3channels) is converted into Gray scale image(1 channel). Coverting image from RGB to Gray scale saves lots of computation power and makes image processing faster. Image is coverted into gray scale image using OpenCV library function cvtColor(<image>, cv2.COLOR_RGB2GRAY). 
+
 ![alt text][image2]
 
+### Remove noise from grary scale image
 
-3. Remove noise from grary scale image
 4. Canny edge detection
 5. Cropped with region of interest
 6. Hough Transformation
