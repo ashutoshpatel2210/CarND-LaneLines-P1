@@ -13,6 +13,7 @@ The goals / steps of this project are the following:
 [image2]: ./processed_grayscale_solidWhiteCurve.png "Grayscale"
 [image3]: ./processed_canny_solidWhiteCurve.jpg "Canny Image"
 [image4]: ./processed_cropped_solidWhiteCurve.jpg "Cropped Image"
+[image5]: ./processed_solidWhiteCurve.jpg "Final Image"
 
 ---
 
@@ -80,27 +81,26 @@ This API gives output "lines " in array having endpoints of detected line segmen
 Hough trnasformation API gives output in lines array. These lines could be left or right side of lane. This step requires processing of each line. To get slope and intercept , np.polyfit() function is called. left lane and right lane is classified as per below. 
 
     left lane: slope < 0
-    right lane: slope > positive
+    right lane: slope > 0
     
 The left_line[] and right_line[] lists find all left and right sides of lane and averages their slopes and intercepts. After finding average slope and intercept of left and right side of lane, code finds x1,y1,x2,y2 points from slope and intercept and passes it to openCV line() API to draw line of desired thickness.  
 
 ### Weighted Average
 API weighted_img() draw lines on original image after adding 0.8 times weights to lines. 
 
+Final image after applying pipeline. 
+
+![alt text][image5]
+
 ### Applying to video
-    
+Function process_image() extracts each frame and apply pipeline lane_finding_pipeline() to each frame. lane_finding_pipeline() function returns left and right lanes for each frame.  
 
 
 ### 2. Identify potential shortcomings with your current pipeline
 
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
+One of shortcoming of the pipeline is that it can not be applied well for curvatures roads. 
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+A possible improvement would be to to reduce region of interest and iterative increase of y values in region of interest to tune region of interest into stright lines(small window) instead of curvature lines(large window). 
