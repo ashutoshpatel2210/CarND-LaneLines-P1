@@ -15,7 +15,8 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
+[image1]: ./test_images/solidWhiteCurve.jpg "Original Image"
+[image2]: ./processed_grayscale_solidWhiteCurve.jpg "Grayscale"
 
 ---
 
@@ -35,12 +36,12 @@ My pipeline consisted of following steps.
 ### 1. Reading the image from test_images
 
 First, images are read from test_images folder using mpimg.imread(). Local copy of images are created using np.copy() function and copy image (lane_image) is passed to pipline function lane_finding_pipeline() to generate left and right lane annonated version of image.     
-[image2]: ./test_images/solidWhiteCurve.jpg
+![alt text][image1]
 
 ### 2. Convert Image into Gray scale Image
 Each image (RGB - 3channels) is converted into Gray scale image(1 channel). Coverting image from RGB to Gray scale saves lots of computation power and makes image processing faster. 
+![alt text][image2]
 
-[image3]: ./test_images_output/processed_grayscale_solidWhiteCurve.jpg
 
 3. Remove noise from grary scale image
 4. Canny edge detection
@@ -56,7 +57,7 @@ In order to draw a single line on the left and right lanes, I modified the draw_
 
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
-![alt text][image1]
+
 
 
 ### 2. Identify potential shortcomings with your current pipeline
