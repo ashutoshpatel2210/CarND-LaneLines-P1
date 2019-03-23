@@ -16,7 +16,7 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./test_images/solidWhiteCurve.jpg "Original Image"
-[image2]: ./examples/grayscale.jpg "Grayscale"
+[image2]: ./processed_grayscale_solidWhiteCurve.png "Grayscale"
 [image3]: ./processed_canny_solidWhiteCurve.jpg "Canny Image"
 [image4]: ./processed_cropped_solidWhiteCurve.jpg "Cropped Image"
 
@@ -71,16 +71,33 @@ Canny image detects all edges in input image but we are interrested only in find
  
  ![alt text][image4] 
 
-6. Hough Transformation
-7. Average lines
-8. Weighted Average
+### Hough Transformation
+Next, Output image of region_of_interest() passes to Hough transformation function. Hough’s transform method transforms a line from its traditional y = mx + b form to rho = x *cos (theta) + y * sin (theta) where rho(=2) is the perpendicular distance from origin to the line, and theta(np.pi/180) is the angle formed by this perpendicular line and horizontal axis. 
+
+The hough transformation function is called with following parameters. 
+rho = 2 # distance resolution in pixels of the Hough grid
+theta = np.pi/180 # angular resolution in radians of the Hough grid
+threshold = 15     # minimum number of votes (intersections in Hough grid cell)
+min_line_length = 40 #minimum number of pixels making up a line
+max_line_gap = 30    # maximum gap in pixels between connectable line segments
+
+This API gives output "lines " in array having endpoints of detected line segments. 
+
+### Modifying draw lines function
+Hough trnasformation API gives output in lines array. These lines could be left or right side of lane. This step requires processing of each line. To get slope and intercept , np.polyfit() function is called. left lane and right lane is classified as per below. 
+
+    left lane: as x value (i.e. width) increases, y value (i.e. height) decreases: slope < 0
+    right lane: as x value (i.e. width) increases, y value (i.e. height) increases: slope > positive
+
+
+
+### Weighted Average
 
 
 Applying to video
     
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
 
 
