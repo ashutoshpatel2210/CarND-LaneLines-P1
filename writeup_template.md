@@ -1,12 +1,6 @@
 # **Finding Lane Lines on the Road** 
 
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
 ---
-
-**Finding Lane Lines on the Road**
 
 The goals / steps of this project are the following:
 * Make a pipeline that finds lane lines on the road
@@ -24,13 +18,12 @@ The goals / steps of this project are the following:
 
 ### Reflection
 
-### 1. Describe your pipeline. 
-As starting point of project, Project requirements and design should be in place. 
-
 ### Requirements:
 Project expects 
  * To have left and right lane lines are accurately annoted for images as well as videos. 
  * Output images and videos are annonated versions of input images and videos.
+
+### 1. Describe your pipeline. 
 
 ### Design
 My pipeline consisted of following steps. 
@@ -86,20 +79,16 @@ This API gives output "lines " in array having endpoints of detected line segmen
 ### Modifying draw lines function
 Hough trnasformation API gives output in lines array. These lines could be left or right side of lane. This step requires processing of each line. To get slope and intercept , np.polyfit() function is called. left lane and right lane is classified as per below. 
 
-    left lane: as x value (i.e. width) increases, y value (i.e. height) decreases: slope < 0
-    right lane: as x value (i.e. width) increases, y value (i.e. height) increases: slope > positive
-
-
+    left lane: slope < 0
+    right lane: slope > positive
+    
+The left_line[] and right_line[] lists find all left and right sides of lane and averages their slopes and intercepts. After finding average slope and intercept of left and right side of lane, code finds x1,y1,x2,y2 points from slope and intercept and passes it to openCV line() API to draw line of desired thickness.  
 
 ### Weighted Average
+API weighted_img() draw lines on original image after adding 0.8 times weights to lines. 
 
-
-Applying to video
+### Applying to video
     
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-
-
 
 
 ### 2. Identify potential shortcomings with your current pipeline
