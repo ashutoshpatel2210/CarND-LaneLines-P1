@@ -16,8 +16,9 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./test_images/solidWhiteCurve.jpg "Original Image"
-[image2]: ./processed_grayscale_solidWhiteCurve.png "Grayscale"
+[image2]: ./examples/grayscale.jpg "Grayscale"
 [image3]: ./processed_canny_solidWhiteCurve.jpg "Canny Image"
+[image4]: ./processed_cropped_solidWhiteCurve.jpg "Cropped Image"
 
 ---
 
@@ -56,6 +57,19 @@ The filtered image is processed with canny edge detection API canny(). It uses o
 ![alt text][image3]
 
 ### Cropped with region of interest
+Canny image detects all edges in input image but we are interrested only in finding lane from image. This step masks all other area of image except lane using region_of_interest() API. region_of_interest() API uses openCV fillPoly() function to idenity region of interest using vertices argument. This vertices argument represents quadilateral area of lane ((0, height),(450,320),(500,320), (width,height)) and it is filled with white color(255). The below code is filling the pixels in quadilateral area.   
+
+    #filling pixels inside the polygon defined by "vertices" with the fill color    
+    cv2.fillPoly(mask, vertices, ignore_mask_color)
+ 
+ The below code uses openCV bitwise_and() function to retun image where lane (quadilateral area) is available. 
+ 
+    #returning the image only where mask pixels are nonzero
+    masked_image = cv2.bitwise_and(img, mask)
+  
+ The below image is generated after this step.
+ 
+ ![alt text][image4] 
 
 6. Hough Transformation
 7. Average lines
