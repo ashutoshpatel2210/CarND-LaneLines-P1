@@ -18,6 +18,7 @@ The goals / steps of this project are the following:
 [image1]: ./test_images/solidWhiteCurve.jpg "Original Image"
 [image2]: ./processed_grayscale_solidWhiteCurve.png "Grayscale"
 [image3]: ./processed_canny_solidWhiteCurve.jpg "Canny Image"
+
 ---
 
 ### Reflection
@@ -51,6 +52,7 @@ Gray scale image is processed with image blurring next. This step helps in reduc
 ### Canny edge detection
 
 The filtered image is processed with canny edge detection API canny(). It uses open CV Canny function to find edges in filtered image. The algorithm will first detect strong edge (strong gradient) pixels above the high_threshold (150), and reject pixels below the low_threshold(50). Next, pixels with values between the low_threshold(50) and high_threshold(150) will be included as long as they are connected to strong edges. The output edges is a binary image with white pixels tracing out the detected edges and black else everywhere. 
+
 ![alt text][image3]
 
 ### Cropped with region of interest
